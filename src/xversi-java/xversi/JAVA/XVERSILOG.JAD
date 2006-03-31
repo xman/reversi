@@ -1,0 +1,154 @@
+// Decompiled by DJ v2.8.8.54 Copyright 2000 Atanas Neshkov  Date: 4/10/2002 8:27:22 PM
+// Home Page : http://members.fortunecity.com/neshkov/dj.html  - Check often for new version!
+// Decompiler options: packimports(3) 
+// Source File Name:   XversiLog.java
+
+import java.io.*;
+
+public class XversiLog
+{
+
+    XversiLog()
+    {
+        totalLookup = 0;
+        pUsed = 0;
+        filename = new String("logfile");
+        try
+        {
+            System.out.println("xversilog created");
+            xc = new XversiLogComponent[32];
+            for(int i = 0; i < 32; i++)
+                xc[i] = new XversiLogComponent();
+
+            init();
+        }
+        catch(IOException ioexception)
+        {
+            System.out.println(ioexception.getMessage());
+        }
+    }
+
+    protected void init()
+        throws IOException
+    {
+        logFile = new RandomAccessFile(filename, "rwd");
+    }
+
+    public int find(long l, long l1, int i)
+        throws IOException
+    {
+        if(pUsed > 32)
+            System.out.println("exceed temp storage size");
+        int j;
+        for(j = 0; j < pUsed; j++)
+            if(xc[j].boardFilled == l && xc[j].board == l1 && xc[j].side == i)
+            {
+                totalLookup++;
+                return j;
+            }
+
+        for(long l2 = logFile.length() / 36L; (long)j < l2 + (long)pUsed; j++)
+            if(findFile(j - pUsed, l, l1, i))
+            {
+                totalLookup++;
+                return j;
+            }
+
+        return -1;
+    }
+
+    public boolean findFile(int i, long l, long l1, int j)
+        throws IOException
+    {
+        long l2 = (long)i * 36L;
+        logFile.seek(l2);
+        if(logFile.readLong() != l)
+            return false;
+        if(logFile.readLong() != l1)
+            return false;
+        logFile.readInt();
+        logFile.readInt();
+        return logFile.readInt() == j;
+    }
+
+    public int getScore(int i)
+        throws IOException
+    {
+        if(i < pUsed)
+        {
+            return xc[i].score;
+        } else
+        {
+            i -= pUsed;
+            long l = (long)i * 36L;
+            logFile.seek(l);
+            logFile.readLong();
+            logFile.readLong();
+            logFile.readInt();
+            logFile.readInt();
+            logFile.readInt();
+            logFile.readInt();
+            return logFile.readInt();
+        }
+    }
+
+    public boolean insert(long l, long l1, int i, int j, int k, 
+            int i1, int j1)
+        throws IOException
+    {
+        if(pUsed >= 32)
+        {
+            return false;
+        } else
+        {
+            pUsed++;
+            int k1 = pUsed - 1;
+            xc[k1].boardFilled = l;
+            xc[k1].board = l1;
+            xc[k1].bc = i;
+            xc[k1].wc = j;
+            xc[k1].side = k;
+            xc[k1].level = i1;
+            xc[k1].score = j1;
+            return true;
+        }
+    }
+
+    public boolean isFull()
+    {
+        return pUsed >= 31;
+    }
+
+    public void write()
+        throws IOException
+    {
+        long l = logFile.length();
+        logFile.seek(l);
+        for(int i = 0; i < pUsed; i++)
+        {
+            logFile.writeLong(xc[i].boardFilled);
+            logFile.writeLong(xc[i].board);
+            logFile.writeInt(xc[i].bc);
+            logFile.writeInt(xc[i].wc);
+            logFile.writeInt(xc[i].side);
+            logFile.writeInt(xc[i].level);
+            logFile.writeInt(xc[i].score);
+        }
+
+        pUsed = 0;
+    }
+
+    public void close()
+        throws IOException
+    {
+        logFile.close();
+    }
+
+    public int totalLookup;
+    public final int size = 32;
+    public XversiLogComponent xc[];
+    public int pUsed;
+    public String filename;
+    public RandomAccessFile logFile;
+    public final int bytesPerComponent = 36;
+}

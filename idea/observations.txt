@@ -1,0 +1,29 @@
+Date: 6 Dec 2004
+1. The redundant checks can be very significantly slow. In addition, there
+seems not may redundant state. Thus, adding checks actually slow down the
+performance.
+2. Generate moves and check moves are most critical parts.
+3. Reduce the generate moves overhead, but limiting the candidate move set.
+4. Define a outer boud and inner bound rectangulars. Such that those moves
+between the outer bound and inner bound are the candidates.
+
+Date: 4 Dec 2004
+1. Board copy vs unmove, which one is more efficient?
+2. When we only need to check whether there is a valid move, we can have early
+termination once we find that the move is valid.
+
+Date: 1 Dec 2004
+1. Pieces must be connected.
+2. Generating moves needs only considering spaces surrounding pieces.
+3. Stable Discs.
+4. X-Squares & C-Squares.
+5. Wedges.
+6. Unbalanced Edges.
+7. Newbie-Trap.
+8. Mobility.
+9. Quiet Moves.
+10. Creeping Along The Edges.
+11. Parity.
+
+
+

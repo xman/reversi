@@ -1,0 +1,204 @@
+// Decompiled by DJ v2.8.8.54 Copyright 2000 Atanas Neshkov  Date: 3/18/2002 6:06:22 PM
+// Home Page : http://members.fortunecity.com/neshkov/dj.html  - Check often for new version!
+// Decompiler options: packimports(3) 
+// Source File Name:   XversiEval.java
+
+
+public class XversiEval
+{
+
+    public XversiEval()
+    {
+    }
+
+    public static int Evaluate(XversiBoard xversiboard, int i, int j, int k)
+    {
+        if(!XversiAgent.CheckSide(i))
+            return 0xff676982;
+        side = i;
+        if(k > 64 - lastnm)
+            maxLevel = 64 - k;
+        else
+            maxLevel = bMaxLevel;
+        int l = Eval(xversiboard, j, maxLevel, k, 0xff676984);
+        return l;
+    }
+
+    protected static int Eval(XversiBoard xversiboard, int i, int j, int k, int l)
+    {
+        if(j == 0)
+            return ComputeEval(xversiboard, i, k);
+        XversiMoveList xversimovelist = XversiAgent.GenerateMove(xversiboard, i);
+        if(xversimovelist == null)
+            return ComputeEval(xversiboard, i, k);
+        XversiBoard xversiboard1 = new XversiBoard();
+        Spot spot = new Spot();
+        int k1 = xversimovelist.GetNum();
+        int l2;
+        if(side == i)
+        {
+            l2 = 0xff676983;
+            for(int i1 = 0; i1 <= k1; i1++)
+            {
+                xversiboard1.Copy(xversiboard);
+                int l1 = xversimovelist.GetMove(i1);
+                XversiAgent.TranslatePosition(l1, spot);
+                XversiAgent.MakeMove(xversiboard1, spot.x, spot.y, i);
+                int j2 = Eval(xversiboard1, (i + 1) % 2, j - 1, k + 1, l2);
+                if(j2 >= l)
+                    return j2;
+                if(j2 > l2)
+                    l2 = j2;
+            }
+
+        } else
+        {
+            l2 = 0x98967d;
+            for(int j1 = 0; j1 <= k1; j1++)
+            {
+                xversiboard1.Copy(xversiboard);
+                int i2 = xversimovelist.GetMove(j1);
+                XversiAgent.TranslatePosition(i2, spot);
+                XversiAgent.MakeMove(xversiboard1, spot.x, spot.y, i);
+                int k2 = Eval(xversiboard1, (i + 1) % 2, j - 1, k + 1, l2);
+                if(k2 <= l)
+                    return k2;
+                if(k2 < l2)
+                    l2 = k2;
+            }
+
+        }
+        return l2;
+    }
+
+    protected static int ComputeEval(XversiBoard xversiboard, int i, int j)
+    {
+        int k = PieceCount(xversiboard, i, j);
+        if(64 - j == maxLevel)
+        {
+            return k;
+        } else
+        {
+            k += Mobility(xversiboard, i, j);
+            k += CheckCorner(xversiboard, i);
+            return k;
+        }
+    }
+
+    protected static int PieceCount(XversiBoard xversiboard, int i, int j)
+    {
+        int k;
+        int l;
+        if(side == 0)
+        {
+            k = xversiboard.GetBC();
+            l = xversiboard.GetWC();
+        } else
+        if(side == 1)
+        {
+            k = xversiboard.GetWC();
+            l = xversiboard.GetBC();
+        } else
+        {
+            return 0xff676989;
+        }
+        if(k == 0)
+            return 0xff676986;
+        if(l == 0)
+            return 0x98967a;
+        if(64 == j)
+        {
+            if(k > l)
+                return 0x98967a;
+            return k >= l ? 0 : 0xff676986;
+        }
+        int i1 = k - l;
+        if(j < 40)
+        {
+            if((k + l) / k > (k + l) - 8)
+                i1 *= 2;
+            else
+                i1 *= -2;
+        } else
+        {
+            i1 *= 3;
+        }
+        return i1;
+    }
+
+    protected static int Mobility(XversiBoard xversiboard, int i, int j)
+    {
+        int k = XversiAgent.CountMove(xversiboard, side);
+        int l;
+        if(j < 40)
+            l = 2 * k;
+        else
+            l = 3 * k;
+        return l;
+    }
+
+    protected static int CheckCorner(XversiBoard xversiboard, int i)
+    {
+        int ai[] = new int[4];
+        int l1 = 0;
+        int j = 0;
+        for(int k = 1; k <= 8; k += 7)
+        {
+            for(int l = 1; l <= 8; l += 7)
+            {
+                if((ai[j] = xversiboard.GetBoard(k, l)) == side)
+                    l1 += 20;
+                else
+                if(ai[j] == (side + 1) % 2)
+                {
+                    l1 -= 25;
+                } else
+                {
+                    int j1 = XversiAgent.CheckMove(xversiboard, k, l, side);
+                    int k1 = XversiAgent.CheckMove(xversiboard, k, l, (side + 1) % 2);
+                    if(j1 > 0 && (i == side || k1 <= 0))
+                        l1 += 20;
+                    else
+                    if(k1 > 0 && (i != side || j1 <= 0))
+                        l1 -= 25;
+                    ai[j] = -1;
+                }
+                j++;
+            }
+
+        }
+
+        int i1;
+        if(ai[0] == -1)
+            if((i1 = xversiboard.GetBoard(2, 2)) == side)
+                l1 -= 25;
+            else
+            if(i1 == (side + 1) % 2)
+                l1 += 20;
+        if(ai[1] == -1)
+            if((i1 = xversiboard.GetBoard(2, 7)) == side)
+                l1 -= 25;
+            else
+            if(i1 == (side + 1) % 2)
+                l1 += 20;
+        if(ai[2] == -1)
+            if((i1 = xversiboard.GetBoard(7, 2)) == side)
+                l1 -= 25;
+            else
+            if(i1 == (side + 1) % 2)
+                l1 += 20;
+        if(ai[3] == -1)
+            if((i1 = xversiboard.GetBoard(7, 7)) == side)
+                l1 -= 25;
+            else
+            if(i1 == (side + 1) % 2)
+                l1 += 20;
+        return l1;
+    }
+
+    public static int maxLevel = 4;
+    private static int bMaxLevel = 4;
+    public static int lastnm = 10;
+    private static int side;
+
+}

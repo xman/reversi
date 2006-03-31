@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<attributes version="1.0">
+   <fileobject name="evalThread.java">
+      <attr name="class_dependency_java.lang.Thread" stringvalue="evalThread"/>
+   </fileobject>
+   <fileobject name="XversiApplet.java">
+      <attr name="class_dependency_java.applet.Applet" stringvalue="XversiApplet"/>
+      <attr name="class_dependency_java.awt.event.ActionListener" stringvalue="XversiApplet"/>
+      <attr name="class_dependency_java.awt.event.MouseListener" stringvalue="XversiApplet"/>
+   </fileobject>
+</attributes>

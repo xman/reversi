@@ -1,0 +1,91 @@
+<html>
+<head>
+<title>Applets List</title>
+<link rel="stylesheet" href="/CE438/css/ils.css" type="text/css">
+</head>
+
+<script language="JavaScript">
+function checkServletFunction(form,callingField)
+{
+  if (callingField == "Rate") 
+  {
+  	setAction(form,'/CE438/servlet/RateLab2Applet?servletFunction=RateApplet');
+   	form.submit();
+  } 
+  else if (callingField == "Comment") 
+  {
+	if (form.commentText.value == null || form.commentText.value == "") 
+	{
+		alert("Please give u commnets!");
+	} 
+	else 
+	{
+   		setAction(form,'/CE438/servlet/CommentLab2Applet?servletFunction=CommentApplet');
+   		form.submit();
+	}
+  } 
+}
+
+function setAction(form,action)
+{
+	form.action = action;
+}
+</script>
+<body bgcolor="#FFFFFF">
+
+<center><p class="TITLE">Lab 2 Program</p></center>
+
+<center>
+  <p class="SUBTITLE">DPXversi</p>
+</center>
+<form method="POST" action="/CE438/servlet/DisplayLab2Applet" name="ShowAppletForm">
+  <div align="center"><center>
+      <table border="0" width="480" height="388">
+        <tr>
+      <td align="center" height="53"><p>      <p><APPLET codebase ="http://155.69.146.48:9000/CE438/users/xman/lab2/applet/179/"  CODE="XversiApplet.class" WIDTH=410 HEIGHT=400>
+</APPLET>            	
+       </td>  
+    </tr>  
+        <tr>
+      <td align="center" height="37">
+       <table border="0"><tr><th align="right">Title:</th><td align="left">DPXversi</td></tr><tr><th align="right">Author:</th><td align="left">Shin Yee Chung</td></tr><tr><th align="right">Submitted Time</th><td align="left">2002-03-15 22:30:07</td></tr><tr><th align="right">Modified Time</th><td align="left">2002-03-16 03:47:37</td></tr><tr><th align="right">Rating:</th><td align="left">Not Rated</td></tr></table>    	</tr>         	
+        <tr> 
+       
+      <td align="center" height="144"><font color="#000080"><b><u>Comments</u></b></font>
+        <p>
+         <table border="0"><tr><td>No Comments found for this applet</td></tr></table>      <textarea rows="4" name="commentText" cols="44">Please input you comment here.</textarea> 
+        </p> 
+        <p><input type="button" value="Add U Comments" name="Comment" onClick="javascript:checkServletFunction(this.form,this.name)">   
+        </p> 
+      </td>   
+    </tr>   
+  </center>   
+        <tr>  
+      <td align="center" height="138"> 
+            <table border="0"> 
+              <tr> 
+                <td><input checked value="v1" name="Rating" type="radio"><img border="0" src="/CE438/images/stars/stars-1.0.gif" width="64" height="12"></td> 
+              </tr> 
+              <tr> 
+                <td><input name="Rating" type="radio" value="v2"><img border="0" src="/CE438/images/stars/stars-2.0.gif" width="64" height="12"></td> 
+              </tr> 
+              <tr> 
+                <td><input name="Rating" type="radio" value="v3"><img border="0" src="/CE438/images/stars/stars-3.0.gif" width="64" height="12"></td> 
+              </tr> 
+              <tr> 
+                <td><input name="Rating" type="radio" value="v4"><img border="0" src="/CE438/images/stars/stars-4.0.gif" width="64" height="12"></td> 
+              </tr> 
+              <tr> 
+                <td><input name="Rating" type="radio" value="v5"><img border="0" src="/CE438/images/stars/stars-5.0.gif" width="64" height="12"></td> 
+              </tr> 
+            </table> 
+            <p> 
+        <center> 
+      <input type="button" name="Rate" value="Vote This Applet" onClick="javascript:checkServletFunction(this.form,this.name)"> 
+      </td>   
+    </tr>    
+<input name="AppletID" type="hidden" value="179"> 
+</form> 
+    </table> 
+  </body>    
+
