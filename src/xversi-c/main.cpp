@@ -22,7 +22,8 @@ int main(int argc, char** argv)
   location_list vmoves ;
   location_list::iterator iter ;
   
-  srand(time(NULL)) ;
+  // srand(time(NULL)) ;
+  srand(100) ;
   
   value = board::WHITE ;
   while(true) {

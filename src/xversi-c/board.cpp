@@ -5,10 +5,65 @@
 
 using namespace std ;
 
+board& board::operator=(const board &b)
+{
+  // memcpy found to improve the performance slightly.
+  memcpy(data, b.data, 64*sizeof(char)) ;
+  white_count = b.white_count ;
+  black_count = b.black_count ;
+  return *this ;
+}
+
+void board::set_at(const location& loc, int side) 
+{ 
+  assert(loc.x >= 0 && loc.x <= 7 && loc.y >= 0 && loc.y <= 7) ;
+  assert(side == BLACK || side == WHITE) ;
+  assert(get_at(loc) != side) ;
+    
+  if(side == BLACK) {
+    if(get_at(loc) == WHITE) {
+      white_count-- ;
+    }
+    black_count++ ;      
+  } else if(side == WHITE) {
+    if(get_at(loc) == BLACK) {
+      black_count-- ;
+    }
+    white_count++ ;
+  }
+  // data[loc.x+(loc.y<<3)] = side ;    
+  data[loc.x][loc.y] = side ;    
+}
+
+
+void board::set_at(int x, int y, int side) 
+{ 
+  assert(x >= 0 && x <= 7 && y >= 0 && y <= 7) ;
+  assert(side == BLACK || side == WHITE) ;
+  assert(get_at(x,y) != side) ;
+    
+  if(side == BLACK) {
+    if(get_at(x,y) == WHITE) {
+      white_count-- ;
+    }
+    black_count++ ;      
+  } else if(side == WHITE) {
+    if(get_at(x,y) == BLACK) {
+      black_count-- ;
+    }
+    white_count++ ;
+  }
+  // data[x+(y<<3)] = side ;    
+  data[x][y] = side ;    
+}
+
+
 void board::reset(void)
 {
-  for(int i = 0 ; i < 64 ; i++) {
-    data[i] = EMPTY ;
+  for(int i = 0 ; i < 8 ; i++) {
+  	for(int j = 0 ; j < 8 ; j++) {
+		data[i][j] = EMPTY ;
+  	}
   }
 
   set_at(3, 3, WHITE) ;
