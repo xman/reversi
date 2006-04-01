@@ -2,19 +2,7 @@
 #define EVALUATE_H
 
 #include "board.h"
-//#include <ext/hash_map>
 #include <cstring>
-
-//using namespace __gnu_cxx;
-
-//struct myhash
-//{
-//  size_t operator()(unsigned long long int x) const
-//  {
-//    return x  ;
-//  }
-//};
-
 
 class evaluate
 {
@@ -24,10 +12,10 @@ public:
   evaluate(int level) : level(level) { } 
   score eval(const board& b, board::piece side, int turn) ;
 
-  int level ;
-  static int rcount ;
-  static int ecount ;
-  static int ccount ;
+  int level ; /// Number of evaluation levels.
+  static int rcount ; /// Number of evaluation recursions.
+  static int ecount ; /// Number of full end-game evaluation.
+  static int ccount ; /// Number of evaluation computation.
 
 protected:
   score recur_eval(const board& b, int turn, int level, int turn_num, score prev_s) ;
@@ -39,12 +27,8 @@ protected:
   score corner(const board& b, int turn)   ;
 
 private:
-//  typedef struct { char data[39] ; } hash_value_type ;
-//  typedef hash_map<unsigned long long int, score, myhash > hash_table ;
-
   board::piece side ;
-//  hash_table e_board ;
-//  hash_value_type hash_board(const board& b) ;
+
 } ;
 
 

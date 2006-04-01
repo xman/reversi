@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -DNDEBUG -O3 -Wall -g
+CXXFLAGS = -DNDEBUG -O3 -Wall 
 
 all:
 	$(CXX) $(CXXFLAGS) main.cpp board.cpp evaluate.cpp gen_move.cpp -o reversi

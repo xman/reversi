@@ -7,32 +7,13 @@ using namespace std ;
 
 void board::reset(void)
 {
-  // location loc ;
-
-  for(int i = 0 ; i < 8 ; i++) {
-    for(int j = 0 ; j < 8 ; j++) {
-      data[i][j] = EMPTY ;
-    }
+  for(int i = 0 ; i < 64 ; i++) {
+    data[i] = EMPTY ;
   }
 
-  // loc.x = 3 ; 
-  // loc.y = 3 ;
-  // set_at(loc, WHITE) ;
   set_at(3, 3, WHITE) ;
-
-  // loc.x = 4 ;
-  // loc.y = 4 ;
-  // set_at(loc, WHITE) ;
   set_at(4, 4, WHITE) ;
-
-  // loc.x = 4 ;
-  // loc.y = 3 ;
-  // set_at(loc, BLACK) ;
   set_at(4, 3, BLACK) ;
-
-  // loc.x = 3 ;
-  // loc.y = 4 ;
-  // set_at(loc, BLACK) ;
   set_at(3, 4, BLACK) ;
 
   black_count = 2 ;
@@ -67,6 +48,7 @@ void board::print(void) const {
   cout << endl << endl ; 
 }
 
+
 void board::move_at(const location& loc, int side)
 {
   int allowed_move ;
@@ -82,7 +64,6 @@ void board::move_at(const location& loc, int side)
 
   allowed_move = get_flip_dir(loc, side) ;
   set_at(loc, side) ;
-//  cand_moves.erase(loc.x+(loc.y<<3)) ;
 
   /* right */
   tv_loc.x = loc.x + 1 ; 
@@ -170,137 +151,6 @@ void board::move_at(const location& loc, int side)
 
 }
 
-bool board::check_move_at(const location& loc, int side) const
-{
-  location tv_loc ;
-  int b_side  ; // side of the piece at (x,y)
-  int opponent ;
-  int count ;
-  int result  ;
-
-  assert(loc.x >= 0 && loc.x <= 7 && loc.y >= 0 && loc.y <= 7) ;
-  assert(side == BLACK || side == WHITE) ;
-  assert(get_at(loc) == EMPTY) ;
-
-  if(side == BLACK) opponent = WHITE ;
-  else opponent = BLACK ;
-  result = 0 ;
-
-  /* right */
-  count = 0 ;
-  for(tv_loc.x = loc.x+1, tv_loc.y = loc.y ; tv_loc.x < 8 ; tv_loc.x++) {
-    b_side = get_at(tv_loc) ;
-    if(b_side == side) {
-      if(count > 0) return true ;
-      break ;
-    } else if(b_side == opponent) {
-      count ++ ;
-    } else {
-      break ;
-    }
-  }
-
-  /* lower right */
-  count = 0 ;
-  for(tv_loc.x = loc.x+1, tv_loc.y = loc.y-1 ; tv_loc.x < 8 && tv_loc.y >= 0 ; tv_loc.x++, tv_loc.y--) {
-    b_side = get_at(tv_loc) ;
-    if(b_side == side) {
-      if(count > 0) return true ;
-      break ;
-    } else if(b_side == opponent) {
-      count ++ ;
-    } else {
-      break ;
-    }
-  }
-
-  /* down */
-  count = 0 ;
-  for(tv_loc.x = loc.x, tv_loc.y = loc.y-1 ; tv_loc.y >= 0 ; tv_loc.y--) {
-    b_side = get_at(tv_loc) ;
-    if(b_side == side) {
-      if(count > 0) return true ;
-      break ;
-    } else if(b_side == opponent) {
-      count ++ ;
-    } else {
-      break ;
-    }
-  }
-
-  /* lower left */
-  count = 0 ;
-  for(tv_loc.x = loc.x-1, tv_loc.y = loc.y-1 ; tv_loc.x >= 0 && tv_loc.y >= 0 ; tv_loc.x--,tv_loc.y--) {
-    b_side = get_at(tv_loc) ;
-    if(b_side == side) {
-      if(count > 0) return true ;
-      break ;
-    } else if(b_side == opponent) {
-      count ++ ;
-    } else {
-      break ;
-    }
-  }
-
-  /* left */
-  count = 0 ;
-  for(tv_loc.x = loc.x-1, tv_loc.y = loc.y ; tv_loc.x >= 0 ; tv_loc.x--) {
-    b_side = get_at(tv_loc) ;
-    if(b_side == side) {
-      if(count > 0) return true ;
-      break ;
-    } else if(b_side == opponent) {
-      count ++ ;
-    } else {
-      break ;
-    }
-  }
-  /* upper left */
-  count = 0 ;
-  for(tv_loc.x = loc.x-1, tv_loc.y = loc.y+1 ; tv_loc.x >= 0 && tv_loc.y < 8 ; tv_loc.x--, tv_loc.y++) {
-    b_side = get_at(tv_loc) ;
-    if(b_side == side) {
-      if(count > 0) return true  ;
-      break ;
-    } else if(b_side == opponent) {
-      count ++ ;
-    } else {
-      break ;
-    }
-  }
-
-  /* up */
-  count = 0 ;
-  for(tv_loc.x = loc.x , tv_loc.y = loc.y+1 ; tv_loc.y < 8 ; tv_loc.y++) {
-    b_side = get_at(tv_loc) ;
-    if(b_side == side) {
-      if(count > 0) return true ;
-      break ;
-    } else if(b_side == opponent) {
-      count ++ ;
-    } else {
-      break ;
-    }
-  }
-
-  /* upper right */
-  count = 0 ;
-  for(tv_loc.x = loc.x+1, tv_loc.y = loc.y+1 ; tv_loc.x < 8 && tv_loc.y < 8 ; tv_loc.x++ , tv_loc.y++) {
-    b_side = get_at(tv_loc) ;
-    if(b_side == side) {
-      if(count > 0) return true ;
-      break ;
-    } else if(b_side == opponent) {
-      count ++ ;
-    } else {
-      break ;
-    }
-  }
-
-  return false ;
-  
-}
- 
 int board::get_flip_dir(const location& loc, int side) const
 {
   location tv_loc ;
