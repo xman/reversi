@@ -4,7 +4,6 @@
 #include "location_list.h"
 #include <cassert>
 #include <cstring>
-#include <set>
 
 
 class board
@@ -65,7 +64,6 @@ bool board::check_move_at(const location& loc, int side) const
   int b_side  ; // side of the piece at (x,y)
   int opponent ;
   int count ;
-  int result  ;
 
   assert(loc.x >= 0 && loc.x <= 7 && loc.y >= 0 && loc.y <= 7) ;
   assert(side == BLACK || side == WHITE) ;
@@ -73,7 +71,6 @@ bool board::check_move_at(const location& loc, int side) const
 
   if(side == BLACK) opponent = WHITE ;
   else opponent = BLACK ;
-  result = 0 ;
 
   /* right */
   count = 0 ;
