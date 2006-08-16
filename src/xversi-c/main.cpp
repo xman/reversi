@@ -1,3 +1,29 @@
+/*
+# This file main.cpp is part of xversi-c, a board game called reversi or othello.
+#
+# Copyright (c) 2005-2006 Chung Shin Yee <cshinyee@gmail.com>
+#
+#       http://cshinyee.blogspot.com/index.html
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License as
+# published by the Free Software Foundation; either version 2 of the
+# License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
+# USA.
+#
+# The GNU General Public License is contained in the file COPYING.
+#
+*/
+
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -22,8 +48,8 @@ int main(int argc, char** argv)
   location_list vmoves ;
   location_list::iterator iter ;
   
-  // srand(time(NULL)) ;
-  srand(100) ;
+  srand(time(NULL)) ;
+  // srand(100) ;
   
   value = board::WHITE ;
   while(true) {
@@ -56,14 +82,16 @@ int main(int argc, char** argv)
     if(value == board::WHITE) value = board::BLACK ;
     else value = board::WHITE ;
     
-    //cin >> m.x >> m.y ;        
-    // cout << "Move at " << m.x << " " << m.y << endl ;
-    //if(m.x >= 0 && m.y >= 0) {
-    //  b.move_at(m, value) ;
-    //  b.print() ; 
-    //}
-    //if(value == board::WHITE) value = board::BLACK ;
-    //else value = board::WHITE ;
+    // FIXME: I should check if the input is valid move.
+    cout << "Please provide coordinate in \"x y\": " ;
+    cin >> m.x >> m.y ;        
+    cout << "Move at " << m.x << " " << m.y << endl ;
+    if(m.x >= 0 && m.y >= 0) {
+      b.move_at(m, value) ;
+      b.print() ; 
+    }
+    if(value == board::WHITE) value = board::BLACK ;
+    else value = board::WHITE ;
   } 
   
   cout << "White: " << b.get_white_count() << " Black: " << b.get_black_count() << endl ;
