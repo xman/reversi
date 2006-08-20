@@ -29,6 +29,8 @@ import java.io.Serializable ;
 /* board of Reversi */
 public class XversiBoard implements Serializable {
 
+private final static long serialVersionUID = 2006L ;
+
 public final static int BOARD_SIZE = 8 ;
 public final static int BOARD_SQUARE = 64 ;
 

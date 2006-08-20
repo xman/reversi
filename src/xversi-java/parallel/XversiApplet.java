@@ -35,7 +35,9 @@ import java.rmi.* ;
 
 /* applet for GUI */
 public class XversiApplet extends Applet implements ActionListener,MouseListener  {
-    
+
+    private static final long serialVersionUID = 2006L ;
+
     protected int numThreads = 1 ;
     protected int numComputeNode = 1 ;
     protected RandomAccessFile nodefile ;    

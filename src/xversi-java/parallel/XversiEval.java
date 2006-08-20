@@ -32,6 +32,7 @@ import java.rmi.registry.* ;
 /* evaluate a board */
 public class XversiEval extends UnicastRemoteObject implements XversiInterface {
  
+  private static final long serialVersionUID = 2006L ;
 
   static Sema llock ;
 
