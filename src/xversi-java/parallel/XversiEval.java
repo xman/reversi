@@ -85,10 +85,9 @@ public class XversiEval extends UnicastRemoteObject implements XversiInterface {
 
     side = c ;
 
-    if(turnNum > 64 - lastnm) 
-      score = Eval(b , turn , 64 - turnNum , turnNum , -9999996) ;
-    else
-      score = Eval(b , turn , maxLevel , turnNum , -9999996) ;
+    if(turnNum > 64 - lastnm) return endEval(b, turn) ;
+    // score = Eval(b , turn , 64 - turnNum , turnNum , -9999996) ;
+    score = Eval(b , turn , maxLevel , turnNum , -9999996) ;
 
     return score ; 
   }
@@ -129,7 +128,7 @@ public class XversiEval extends UnicastRemoteObject implements XversiInterface {
       numMove = list.GetNum() ;
       if(side == turn) {
         bestScore = -9999997 ; 
-        for(i = 0 ; i <= numMove ; i++) {
+        for(i = 0 ; i < numMove ; i++) {
            bb.Copy(b) ;
            move = list.GetMove(i) ; 
            XversiAgent.TranslatePosition(move , s) ;
@@ -144,7 +143,7 @@ public class XversiEval extends UnicastRemoteObject implements XversiInterface {
 
       } else {
         bestScore = 9999997 ;
-        for(i = 0 ; i <= numMove ; i++) {
+        for(i = 0 ; i < numMove ; i++) {
            bb.Copy(b) ;
            move = list.GetMove(i) ;
            XversiAgent.TranslatePosition(move , s) ;
@@ -165,6 +164,66 @@ public class XversiEval extends UnicastRemoteObject implements XversiInterface {
     } 
 
   }
+
+
+
+  /* recursively evaluate until end game */
+  protected int endEval(XversiBoard b , int turn) {
+
+    int i ;
+    int numMove ;
+    int move ;
+    Spot s ;
+    int score ;
+    boolean can_draw = false ;
+    XversiMoveList list ;
+    XversiBoard bb ;
+
+    list = XversiAgent.GenerateMove(b , turn) ;
+    if(list == null) {
+      if((list = XversiAgent.GenerateMove(b, (turn+1)%2)) == null) {
+        if(side == 0)
+          return b.GetBC() >= b.GetWC() ? 9999990 : -9999990 ;
+        else
+          return b.GetWC() >= b.GetBC() ? 9999990 : -9999990 ;
+      } else {
+        turn = (turn + 1) % 2 ;
+      }      
+    }
+
+    bb = new XversiBoard() ;
+    s = new Spot() ;
+    can_draw = false ;
+    if(side == turn) {
+      numMove = list.GetNum() ;
+      for(i = 0 ; i < numMove ; i++) {
+        bb.Copy(b) ;
+        move = list.GetMove(i) ;
+        XversiAgent.TranslatePosition(move , s) ;
+        XversiAgent.MakeMove(bb , s.x , s.y , turn) ;
+        score = endEval(bb , (turn+1)%2) ;
+        if(score > 0) return score ;
+        if(score == 0) can_draw = true ;
+      }
+      if(can_draw) return 0 ;
+      return -9999990 ;
+    } else {
+      numMove = list.GetNum() ;
+      for(i = 0 ; i < numMove ; i++) {
+        bb.Copy(b) ;
+        move = list.GetMove(i) ;
+        XversiAgent.TranslatePosition(move, s) ;
+        XversiAgent.MakeMove(bb, s.x, s.y, turn) ;
+        score = endEval(bb, (turn+1)%2) ;
+        if(score < 0) return score ;
+        if(score == 0) can_draw = true ;
+      }
+      if(can_draw) return 0 ;
+      return 9999990 ;
+    }
+  }
+
+
 
   /* evaluate a board */
   protected int ComputeEval(XversiBoard b , int turn , int turnNum) {
