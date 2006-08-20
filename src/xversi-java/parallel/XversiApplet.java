@@ -168,6 +168,8 @@ public class XversiApplet extends Applet implements ActionListener,MouseListener
         agent.Init() ;
         player.Init(1) ;
         
+        // Let turn = 1, to activate Computer vs Computer mode.
+        // turn = 1 ;
         turn = 0 ;
         turnNum = 4 ;
         humanLabel.setText("You: Black") ;
@@ -281,6 +283,9 @@ public class XversiApplet extends Applet implements ActionListener,MouseListener
             
             if(XversiAgent.CountMove(b , (turn+1)%2) > 0) {
                 turn = (turn + 1) % 2 ;
+		// Let player switch side, and call start(), to activate Computer vs Computer mode.
+		// player.SwitchSide() ;
+		// start() ;
             } else {
                 if(XversiAgent.CountMove(b , turn) > 0) {
                     start() ;
@@ -296,7 +301,6 @@ public class XversiApplet extends Applet implements ActionListener,MouseListener
             }
             
         }
-        
         
         
     }
