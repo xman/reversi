@@ -35,8 +35,8 @@ public class XversiEval extends UnicastRemoteObject implements XversiInterface {
 
   static Sema llock ;
 
-  public int maxLevel = 4 ;
-  public int lastnm = 10 ;
+  public int maxLevel = 5 ;
+  public int lastnm = 13 ;
   private int side ;  
 
   /* create rmiregistry, rebind a remote object */
@@ -84,10 +84,10 @@ public class XversiEval extends UnicastRemoteObject implements XversiInterface {
 
     side = c ;
 
-    if(64 - turnNum < lastnm) 
+    if(turnNum > 64 - lastnm) 
       score = Eval(b , turn , 64 - turnNum , turnNum , -9999996) ;
     else
-      score = Eval(b , turn , maxLevel - 1 , turnNum , -9999996) ;
+      score = Eval(b , turn , maxLevel , turnNum , -9999996) ;
 
     return score ; 
   }
@@ -105,12 +105,7 @@ public class XversiEval extends UnicastRemoteObject implements XversiInterface {
     XversiMoveList list ;
     XversiBoard bb ;
 
-    if(level == 0) {
-      if(turnNum == 64) {
-        return BinPieceCount(b) ;
-      }
-      return ComputeEval(b,turn,turnNum) ;
-    }
+    if(level == 0) return ComputeEval(b,turn,turnNum) ;
     list = XversiAgent.GenerateMove(b , turn) ; 
     if(list == null) {
       if(XversiAgent.GenerateMove(b , (turn+1)%2) == null) {
@@ -289,7 +284,7 @@ public class XversiEval extends UnicastRemoteObject implements XversiInterface {
 
 
     score = count - count2 ;
-    if(turnNum < 45) {
+    if(turnNum < 40) {
       if((count+count2) / count > count + count2 - 8) {
         score *= 2 ;
       } else {
