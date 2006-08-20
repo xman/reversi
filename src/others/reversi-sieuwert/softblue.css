@@ -1,0 +1,57 @@
+BODY {color: #000000; 
+      background-color: #FFFFFF; 
+      font-family: Arial, Helvetica, sans-serif;
+      fontsize:10pt;
+      margin:10}
+
+TD  { font-family: Arial, Helvetica, sans-serif;
+      font-size:10pt;
+      margin:0}
+      
+
+H1 {  font-size: 16pt;
+      text-align: center;}
+
+H2 {  font-size: 12pt;
+      font-style:italic; 
+      font-weight:bold;
+      text-align: center}
+
+a		{  color: #0000AA;text-decoration:none} 
+a:visited 	{  color: #0000AA;text-decoration:none}
+a:hover 	{  color: #555555;text-decoration:none}
+
+
+.content{padding:10pt;
+	 line-height:140%;
+	 margin-left:20pt;
+	 text-align:justify;}
+.large  {font-size:15pt}
+.dtitem {font-style:underline}
+
+#mainmenu {color:#F1F3C0;
+	   font-weight:bold;
+	   margin:0;
+	   padding:0;}
+#mainmenu:hover {color: #D8E6FF;text-decoration:none}
+
+#contexttitle {color:black;
+	   font-weight:bold;
+	   font-size:12pt;
+	   margin:0;
+	   padding:0;}
+#contexttitle:hover {color: #0000FF;text-decoration:none}
+
+#contextmenu {color:black;
+	   font-weight:normal;
+	   font-size:12pt;
+	   margin:0;
+	   padding:0;}
+#contextmenu:hover {color: #0000FF;text-decoration:none}
+
+#uplevel {color:black;
+	   font-weight:normal;
+	   font-size:9pt;
+	   margin:0;
+	   padding:0;}
+#uplevel:hover {color:red;text-decoration:none}

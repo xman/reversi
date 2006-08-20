@@ -1,0 +1,112 @@
+<html>
+ <head>
+  <title>blueRing software development - Reversi
+  </title>
+  <link rel="STYLESHEET" href="softblue.css" type="text/css">
+ </head>
+
+ <body>
+  <table width="700" height="100%" valign="top" align="center" rows="40,18,*" cols="1,117,*" border="0" cellpadding="0" cellspacing="0">
+
+   <tr valign="top" align="left">
+    <td width="1" height="40">&nbsp;</td>
+    <td width="117" height="100%" rowspan="3" align="left" valign="top" bgcolor="#D8E6FF">
+     <table width="117" height="100%" border="0" bgcolor="#D8E6FF" cellpadding="0" cellspacing="0"  background="hp-menu.jpg">
+      <tr><td width="100%" height="114" valign="top" align="center">
+       <img src="hp-logo.jpg" align="top" width="117" height="114" border="0" alt="www.bluering.nl" hspace="0" vspace="0">
+	  </td></tr>
+	  <tr><td width="100%" height="*" valign="top" align="center">&nbsp;
+<!-- **************** -->
+<!--contextmenu-->
+<p id="contexttitle">Reversi</p>
+<p><a id="uplevel" href="http://www.bluering.nl/reversi/index.html">Website</a>
+<p><a id="contextmenu" href="ppracing.java">reversi.java</a>
+<p><a id="contextmenu" href="javadoc/index.html" target="_new">javadoc</a>
+<!-- **************** -->
+	  </td></tr>
+	  <tr><td width="100%" height="30" valign="bottom">
+	   <img src="hp-menu2.jpg" align="top" width="117" height="30" border="0" hspace="0" vspace="0">
+	  </td></tr>
+     </table>
+    </td>
+    <td width="*" height="40" rowspan="1" align="left" valign="top" bgcolor="#D8E6FF">
+     <table width="483" height="40" border="0" bgcolor="#D8E6FF" cellpadding="0" cellspacing="0"  background="hp-titels.jpg">
+      <tr><td>&nbsp;</td></tr>
+     </table>
+    </td>
+   </tr>
+
+   <tr valign="top" align="left">
+    <td width="1" height="18">&nbsp;</td>
+    <td width="100%" height="18" bgcolor="#D8E6FF" valign="top">
+     <table width="483" height="18" border="0" rows="1" cols="1" bgcolor="black" cellpadding="0" cellspacing="0"  background="hp-zwart.jpg">
+	  <tr><td width="483" height="18" valign="top" id="mainmenu">
+
+<!-- ************** -->
+<!-- Start mainmenu -->
+&nbsp;&nbsp;
+<a id="mainmenu" href="http://www.bluering.nl/index.html">home</a>
+&nbsp;&middot;&nbsp;
+<a id="mainmenu" href="http://www.bluering.nl/whitespace/index.html">WhiteSpace</a>
+&nbsp;&middot;&nbsp;
+<a id="mainmenu" href="http://www.bluering.nl/contact/index.html">contact</a>
+&nbsp;&middot;&nbsp;
+<a id="mainmenu" href="http://www.bluering.nl/guestbook/index.html" alt="guestbook">guestbook</a>
+<!-- End of mainmenu-->
+<!-- ************** -->
+	  </td></tr>
+     </table>
+    </td>
+   </tr>
+   <tr valign="top" align="left">
+    <td width="1" height="100%">&nbsp;</td>
+    <td width="*" height="100%" bgcolor="white" valign="top" class="content">&nbsp;
+<!-- *************** -->
+<!--maintext-->
+
+<H1>Reversi / Othello </H1>
+
+<CENTER><APPLET CODE="reversi.class" WIDTH=310 HEIGHT=340 align=center>
+<param name=stonesize value="30">
+</APPLET></CENTER>
+<hr>
+<h2>Game Rules</h2>
+The game of Reversi was invented in London, in the last half of the 19th century. The game is played by two players: a red player and a green player. The players place counters of their respective colors alternately. Red plays first. Each counter must be placed such that it 'closes-in' a straight line of one or more of the opponent's counters (horizontal, vertical or diagonal) . All counters closed-in by the just placed counter then change color.<p>
+If it is not possible for a player to close in at least one of the opponents counters, he passes and his opponent can play.The game ends if the board is filled with 64 counters, or if none of the players can do a move. The player with the most counters of his color wins the game.<p>
+To help you play the game, the empty fields were you can play are marked with a number. The number indicates the number of counters changing sides with that move.
+<HR>
+<h2>Applet</h2>
+The java applet above allows you to play the game. It shows the board. It starts in a situation where red, the user is the first player, and green, the computer, moves second. You can change this by pressing new game: A window pops up where you can choose between several altenatives:
+<ul>
+<li>Human versus computer: You play against the computer, and you move first.
+<li>Human versus human: You can play the game against a friend (on the same computer. There is no network option).
+<li>Computer versus human: You play against the computer, and the computer moves first. Note that you will have to click anywhere on the board before the computer does a move.
+<li>Computer versus computer: This will let the computer play against itself. You will have to click in the board somewhere before each move: The players will wait to do something until you indicate you are ready for the next move. So if you do not mouseclick in the board, nothing happens.
+</ul>
+There is another button <b>undo move</b> in the applet. You can press this button to undo the last move. Note that you typically must press this button twice, because to change your move you must undo the computers move first, and then your move.<p>
+There are two status lines. One indicates whose turn it is, and how many counters each player has. The other one tells you if the computer is thinking.
+
+<HR>
+<h2>Sourcecode</h2>
+
+
+<ul>
+<li><a href="reversi.java">reversi.java</a> just the java source. All you need if you have some experience with java
+<li><a href="javadoc/index.html">javadoc</a> A description of the sourcecode in html form, just like the official java documentation.
+</ul>
+
+We encourage you to download the sourcecode. Here are a few reasons to do so.
+<ul>
+<li>If you compile the code you can play reversi on your own computer, without any internet connection. You can also put this game on your own homepage, but please notify us and give a link to the source code.
+<li>This applet comes with lots of detailed explanation of how this game was made. You can learn a lot about java applet programming by scrolling through it.
+<li>It is a lot of fun to change the appearance, the difficulty level, or whatever. Try to improve it with your own ideas! If you run into trouble doing this, you may send us email and we will try to help you.
+<li>This applet tells much about creating a board game in java. This applet uses the <b>minimax principle</b> that is very important in <b>chess programs</b> and many other games. It combines this principle with the <b>alpha-beta</b> search strategy that accelerates search. If you understand this program, it will be a lot easier for you to create other games.
+<li>This applet has been trained with a <b>genetic algorithm</b>. The genetic algorithm is included in this sourcecode, so if you download it you can train it yourself. There is much experimentation to do here! If you want to learn more about <b>Artificial Intelligence in board games</b>, this is your chance.
+</ul>
+
+<!-- *************** -->
+    </td>
+   </tr>
+  </table>
+ </body>
+</html>
