@@ -128,7 +128,7 @@ public class XversiEval extends UnicastRemoteObject implements XversiInterface {
       numMove = list.GetNum() ;
       if(side == turn) {
         bestScore = -9999997 ; 
-        for(i = 0 ; i < numMove ; i++) {
+        for(i = 0 ; i <= numMove ; i++) {
            bb.Copy(b) ;
            move = list.GetMove(i) ; 
            XversiAgent.TranslatePosition(move , s) ;
@@ -143,7 +143,7 @@ public class XversiEval extends UnicastRemoteObject implements XversiInterface {
 
       } else {
         bestScore = 9999997 ;
-        for(i = 0 ; i < numMove ; i++) {
+        for(i = 0 ; i <= numMove ; i++) {
            bb.Copy(b) ;
            move = list.GetMove(i) ;
            XversiAgent.TranslatePosition(move , s) ;
@@ -196,7 +196,7 @@ public class XversiEval extends UnicastRemoteObject implements XversiInterface {
     can_draw = false ;
     if(side == turn) {
       numMove = list.GetNum() ;
-      for(i = 0 ; i < numMove ; i++) {
+      for(i = 0 ; i <= numMove ; i++) {
         bb.Copy(b) ;
         move = list.GetMove(i) ;
         XversiAgent.TranslatePosition(move , s) ;
@@ -209,7 +209,7 @@ public class XversiEval extends UnicastRemoteObject implements XversiInterface {
       return -9999990 ;
     } else {
       numMove = list.GetNum() ;
-      for(i = 0 ; i < numMove ; i++) {
+      for(i = 0 ; i <= numMove ; i++) {
         bb.Copy(b) ;
         move = list.GetMove(i) ;
         XversiAgent.TranslatePosition(move, s) ;
