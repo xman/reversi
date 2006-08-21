@@ -27,7 +27,7 @@
 /* list of moves */
 public class XversiMoveList {
 
-  private int num ;
+  private int num ; // FIXME: This should be a zero-based index. It ranges from 0 to n-1.
   private int maxNum ;
   private int[] list ;
 
@@ -54,6 +54,7 @@ public class XversiMoveList {
     return maxNum ;
   }
 
+  // FIXME: Return the max index. Dont get mistaken by the function name!!!
   public int GetNum() {
     return num ;
   }
