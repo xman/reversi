@@ -226,46 +226,17 @@ public class XversiApplet extends Applet implements ActionListener,MouseListener
                         ethread.start() ;
                                                                      
                     } catch (Exception e) { System.out.println(e) ; }
-                    
-/*                    
-
-                    while(true) {
-                        try {
-                        Thread.sleep(100) ;
-                        } catch(InterruptedException e) { }
-                        lock.down() ;
-                        //System.out.println("count val : " + parameters.counter.intValue()) ;
-                        //System.out.println("i " + i) ;
-                        //System.out.println("score : " + parameters.s.intValue() ) ;
-                        if(parameters.counter.intValue() >= totalM || parameters.counter.intValue() + numThreads*numComputeNode - 1 > i ) {
-                            
-                            lock.up() ;
-                            break ;
-                        }
-                        lock.up() ;
-                    }
-*/
-
                 }
 
-
-                
-                try {
-                    while(true) {
-                        Thread.sleep(200) ;
-                        lock.down() ;
-                        //System.out.println("count val : " + parameters.counter.intValue()) ;
-                        //System.out.println("totalM " + totalM) ;
-                        if(parameters.counter.intValue() >= totalM) {
-                            
-                            lock.up() ;
-                            break ;
-                        }
+                while(true) {
+                    lock.down() ;
+                    if(parameters.counter.intValue() >= totalM) {
                         lock.up() ;
-
+                        break ;
                     }
-                } catch (InterruptedException e) { }
-
+                    lock.up() ;
+                    Thread.yield() ;
+                }
 
 		System.out.println("best score :  " + parameters.bS.intValue()) ;		
                 
