@@ -50,7 +50,7 @@ public class evalThread extends Thread {
     }
     
     public void run() {
-        int score = -999999 ;
+        int score = -111111 ;
         
         try {
             score = interf.getEvalScore(b , side , t , tn) ;
