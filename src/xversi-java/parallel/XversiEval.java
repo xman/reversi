@@ -182,10 +182,11 @@ public class XversiEval extends UnicastRemoteObject implements XversiInterface {
     list = XversiAgent.GenerateMove(b , turn) ;
     if(list == null) {
       if((list = XversiAgent.GenerateMove(b, (turn+1)%2)) == null) {
+        if(b.GetBC() == b.GetWC()) return 5000000 ;
         if(side == 0)
-          return b.GetBC() >= b.GetWC() ? 9999990 : -9999990 ;
+          return b.GetBC() > b.GetWC() ? 9999990 : -9999990 ;
         else
-          return b.GetWC() >= b.GetBC() ? 9999990 : -9999990 ;
+          return b.GetWC() > b.GetBC() ? 9999990 : -9999990 ;
       } else {
         turn = (turn + 1) % 2 ;
       }      
@@ -202,10 +203,10 @@ public class XversiEval extends UnicastRemoteObject implements XversiInterface {
         XversiAgent.TranslatePosition(move , s) ;
         XversiAgent.MakeMove(bb , s.x , s.y , turn) ;
         score = endEval(bb , (turn+1)%2) ;
-        if(score > 0) return score ;
-        if(score == 0) can_draw = true ;
+        if(score > 9000000) return score ;
+        if(score == 5000000) can_draw = true ;
       }
-      if(can_draw) return 0 ;
+      if(can_draw) return 5000000 ;
       return -9999990 ;
     } else {
       numMove = list.GetNum() ;
@@ -215,10 +216,10 @@ public class XversiEval extends UnicastRemoteObject implements XversiInterface {
         XversiAgent.TranslatePosition(move, s) ;
         XversiAgent.MakeMove(bb, s.x, s.y, turn) ;
         score = endEval(bb, (turn+1)%2) ;
-        if(score < 0) return score ;
-        if(score == 0) can_draw = true ;
+        if(score < -9000000) return score ;
+        if(score == 5000000) can_draw = true ;
       }
-      if(can_draw) return 0 ;
+      if(can_draw) return 5000000 ;
       return 9999990 ;
     }
   }
