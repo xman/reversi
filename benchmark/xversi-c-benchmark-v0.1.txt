@@ -1,0 +1,49 @@
+Reversi in C++
+White: 44 Black: 20
+Recursive evaluate: 53671516
+Recursive end eval: 135214583
+Evaluation: 44228633
+
+Host: Sai - AMD64 X2 4200+ (2.2GHz)
+Compiler: GCC 4.1.1 64bit
+real    3m0.532s
+user    3m0.111s
+sys     0m0.268s
+
+Compiler: GCC 4.1.1 32bit
+real    5m7.210s
+user    4m53.902s
+sys     0m1.964s
+
+Host: Turing - Itanium II 1.5GHz
+Compiler: Intel(R) C Itanium(R) Compiler for Itanium(R)-based applications Version 9.0 Build 20050430 Package ID: l_cc_p_9.0.021
+real    6m35.306s
+user    6m33.611s
+sys     0m0.021s
+Compiler: GCC 3.3.3
+
+Host: Shannon - Itanium II 1.4GHz
+Compiler: Intel(R) C Itanium(R) Compiler for Itanium(R)-based applications Version 9.0 Build 20051201 Package ID: l_cc_c_9.0.030
+real    7m16.698s
+user    7m16.617s
+sys     0m0.023s
+Compier: GCC 4.1.0
+real    6m8.471s
+user    6m8.440s
+sys     0m0.019s
+
+Host: Veragoo - Intel Core Duo 1.83GHz
+real    5m5.423s
+user    5m4.806s
+sys     0m0.227s
+
+Host: Kenshin - Intel Pentium 4 HT 3GHz
+Compiler: Intel(R) C Compiler for 32-bit applications, Version 9.0 Build 20051201Z Package ID: l_cc_c_9.0.030
+real    5m7.080s
+user    5m3.511s
+sys     0m0.684s
+Compiler: GCC 4.1.0
+real    4m37.404s
+user    4m34.753s
+sys     0m0.604s 
+
