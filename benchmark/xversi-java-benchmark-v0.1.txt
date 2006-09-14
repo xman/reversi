@@ -1,0 +1,32 @@
+Parallel Reversi in Java
+
+Host: Sai - AMD64 X2 4200+ (2.2GHz)
+java version "1.5.0_08"
+Java(TM) 2 Runtime Environment, Standard Edition (build 1.5.0_08-b03)
+Java HotSpot(TM) 64-Bit Server VM (build 1.5.0_08-b03, mixed mode)
+
+small:
+real    0m31.404s
+user    0m4.720s
+sys     0m2.832s
+
+big:
+real    2m54.291s
+user    0m11.721s
+sys     0m13.621s
+
+
+Host: Ben - Intel Core Duo 2.16GHz
+
+small:
+real    1m3.315s
+user    0m4.007s
+sys     0m2.576s
+
+big:
+real    6m10.334s
+user    0m16.131s
+sys     0m13.302s
+
+
+

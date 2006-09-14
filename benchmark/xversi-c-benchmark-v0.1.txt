@@ -10,10 +10,18 @@ real    3m0.532s
 user    3m0.111s
 sys     0m0.268s
 
+real    3m0.320s
+user    3m0.071s
+sys     0m0.244s
+
 Compiler: GCC 4.1.1 32bit
 real    5m7.210s
 user    4m53.902s
 sys     0m1.964s
+
+real    4m46.710s
+user    4m46.262s
+sys     0m0.340s
 
 Host: Turing - Itanium II 1.5GHz
 Compiler: Intel(R) C Itanium(R) Compiler for Itanium(R)-based applications Version 9.0 Build 20050430 Package ID: l_cc_p_9.0.021
@@ -36,6 +44,17 @@ Host: Veragoo - Intel Core Duo 1.83GHz
 real    5m5.423s
 user    5m4.806s
 sys     0m0.227s
+
+Host: Ben - Intel Core Duo 2.16GHz
+Intel(R) C Compiler for 32-bit applications, Version 9.1    Build 20060707
+Package ID: m_cc_c_9.1.029
+real    4m21.610s
+user    4m11.141s
+sys     0m1.169s
+
+real    4m20.268s
+user    4m18.705s
+sys     0m0.352s
 
 Host: Kenshin - Intel Pentium 4 HT 3GHz
 Compiler: Intel(R) C Compiler for 32-bit applications, Version 9.0 Build 20051201Z Package ID: l_cc_c_9.0.030

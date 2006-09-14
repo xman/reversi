@@ -1,0 +1,37 @@
+Intel(R) C Compiler for 32-bit applications, Version 9.1    Build 20060707 Package ID: m_cc_c_9.1.029
+real    4m21.610s
+user    4m11.141s
+sys     0m1.169s
+
+Machine Name:	MacBook Pro 15"
+  Machine Model:	MacBookPro1,1
+  CPU Type:	Intel Core Solo
+  Number Of Cores:	1
+  CPU Speed:	2.16 GHz
+  Memory:	2 GB
+  Bus Speed:	667 MHz
+  Boot ROM Version:	MBP11.0055.B03
+  Serial Number:	W86240QQVWZ
+  SMC Version:	1.2f10
+  L2 Cache:	2 MB
+
+reversi: Mach-O executable i386
+
+---------------------
+dual-core
+real    4m20.268s
+user    4m18.705s
+sys     0m0.352s
+---------------------
+
+Parallel
+real    1m3.315s
+user    0m4.007s
+sys     0m2.576s
+--------------------
+
+real    6m10.334s
+user    0m16.131s
+sys     0m13.302s
+
+
