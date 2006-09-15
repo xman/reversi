@@ -35,19 +35,19 @@ Compiler: Intel(R) C Itanium(R) Compiler for Itanium(R)-based applications Versi
 real    7m16.698s
 user    7m16.617s
 sys     0m0.023s
-Compier: GCC 4.1.0
+Compier: GCC 4.1.0 64bit
 real    6m8.471s
 user    6m8.440s
 sys     0m0.019s
 
 Host: Veragoo - Intel Core Duo 1.83GHz
+Compiler: ??? 32bit
 real    5m5.423s
 user    5m4.806s
 sys     0m0.227s
 
 Host: Ben - Intel Core Duo 2.16GHz
-Intel(R) C Compiler for 32-bit applications, Version 9.1    Build 20060707
-Package ID: m_cc_c_9.1.029
+Compiler: Intel(R) C Compiler for 32-bit applications, Version 9.1 Build 20060707 Package ID: m_cc_c_9.1.029
 real    4m21.610s
 user    4m11.141s
 sys     0m1.169s
@@ -55,6 +55,14 @@ sys     0m1.169s
 real    4m20.268s
 user    4m18.705s
 sys     0m0.352s
+
+Host: Ben2 - Intel Xeon Woodcrest 2.66GHz, 4MB L2, 1GB RAM, FSB 1.33GHz
+Compiler: GCC 4.0.1 32bit (Apple Computer, Inc. build 5363) Target: i686-apple-darwin8
+real    3m12.738s
+user    3m12.609s
+sys     0m0.e02s
+Compiler: GCC 4.0.1 64bit (Apple Computer, Inc. build 5363) Target: i686-apple-darwin8
+2m22s
 
 Host: Kenshin - Intel Pentium 4 HT 3GHz
 Compiler: Intel(R) C Compiler for 32-bit applications, Version 9.0 Build 20051201Z Package ID: l_cc_c_9.0.030

@@ -1,0 +1,54 @@
+Using built-in specs.
+Target: i686-apple-darwin8
+Configured with: /private/var/tmp/gcc/gcc-5363.obj~28/src/configure --disable-checking -enable-werror --prefix=/usr --mandir=/share/man --enable-languages=c,objc,c++,obj-c++ --program-transform-name=/^[cg][^.-]*$/s/$/-4.0/ --with-gxx-include-dir=/include/c++/4.0.0 --with-slibdir=/usr/lib --build=powerpc-apple-darwin8 --with-arch=nocona --with-tune=generic --program-prefix= --host=i686-apple-darwin8 --target=i686-apple-darwin8
+Thread model: posix
+gcc version 4.0.1 (Apple Computer, Inc. build 5363)
+
+ Processor Name:	Dual-Core Intel Xeon
+  Processor Speed:	2.66 GHz
+  Number Of Processors:	2
+  Total Number Of Cores:	4
+  L2 Cache (per processor):	4 MB
+  Memory:	1 GB
+  Bus Speed:	1.33 GHz
+
+serial 
+real    3m12.738s
+user    3m12.609s
+sys     0m0.e02s
+
+64bit C benchmarks
+2m22s 
+-------
+j2se1.4
+Parallel-small
+
+real    0m26.473s
+user    0m4.083s
+sys     0m2.692s
+
+small 2
+real    0m46.040s
+user    0m2.738s
+sys     0m1.838s
+
+small 4
+real    0m25.256s
+user    0m4.129s
+sys     0m2.703s
+
+Parallel-big
+real    2m25.540s
+user    0m21.466s
+sys     0m16.206s
+
+big 2
+real    4m17.293s
+user    0m11.249s
+sys     0m9.497s
+
+big 4
+real    2m25.547s
+user    0m21.752s
+sys     0m16.403s
+

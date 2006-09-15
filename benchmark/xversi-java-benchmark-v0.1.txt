@@ -5,12 +5,46 @@ java version "1.5.0_08"
 Java(TM) 2 Runtime Environment, Standard Edition (build 1.5.0_08-b03)
 Java HotSpot(TM) 64-Bit Server VM (build 1.5.0_08-b03, mixed mode)
 
-small:
+small 32bit, 2 cores:
+real    0m39.120s
+user    0m5.588s
+sys     0m3.812s
+
+real    0m40.737s
+user    0m5.924s
+sys     0m3.024s
+
+small 64bit, 2 cores:
 real    0m31.404s
 user    0m4.720s
 sys     0m2.832s
 
-big:
+real    0m32.460s
+user    0m4.916s
+sys     0m3.300s
+
+big 32bit, 2 cores:
+real    3m50.201s
+user    0m26.022s
+sys     0m9.585s
+
+real    3m34.306s
+user    0m21.769s
+sys     0m9.533s
+
+real    3m40.114s
+user    0m21.997s
+sys     0m10.037s
+
+real    3m48.091s
+user    0m24.834s
+sys     0m9.001s
+
+big 64bit, 2 cores:
+real    3m0.771s
+user    0m16.621s
+sys     0m10.137s
+
 real    2m54.291s
 user    0m11.721s
 sys     0m13.621s
@@ -18,15 +52,35 @@ sys     0m13.621s
 
 Host: Ben - Intel Core Duo 2.16GHz
 
-small:
+small 32bit, 2 cores:
 real    1m3.315s
 user    0m4.007s
 sys     0m2.576s
 
-big:
+big 32bit, 2 cores:
 real    6m10.334s
 user    0m16.131s
 sys     0m13.302s
 
+Host: Ben2 - Intel Xeon Woodcrest 2.66GHz, 4MB L2, 1GB RAM, FSB 1.33GHz.
+J2SE1.4
 
+small 32bit, 2 cores:
+real    0m46.040s
+user    0m2.738s
+sys     0m1.838s
 
+small 32bit, 2x2 cores:
+real    0m25.256s
+user    0m4.129s
+sys     0m2.703s
+
+big 32bit, 2 cores:
+real    4m17.293s
+user    0m11.249s
+sys     0m9.497s
+
+big 32bit, 2x2 cores:
+real    2m25.547s
+user    0m21.752s
+sys     0m16.403s
