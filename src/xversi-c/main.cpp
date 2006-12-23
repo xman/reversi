@@ -3,7 +3,7 @@
 #
 # Copyright (c) 2005-2006 Chung Shin Yee <cshinyee@gmail.com>
 #
-#       http://cshinyee.blogspot.com/index.html
+#       http://myxman.org
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as
@@ -44,7 +44,7 @@ int main(int argc, char** argv)
   location_list::location best_move ;
   evaluate::score best_s ;
   evaluate::score s ;
-  evaluate e(5) ;
+  evaluate e(6) ;
   location_list vmoves ;
   location_list::iterator iter ;
   
@@ -83,15 +83,15 @@ int main(int argc, char** argv)
     else value = board::WHITE ;
     
     // FIXME: I should check if the input is valid move.
-    cout << "Please provide coordinate in \"x y\": " ;
-    cin >> m.x >> m.y ;        
-    cout << "Move at " << m.x << " " << m.y << endl ;
-    if(m.x >= 0 && m.y >= 0) {
-      b.move_at(m, value) ;
-      b.print() ; 
-    }
-    if(value == board::WHITE) value = board::BLACK ;
-    else value = board::WHITE ;
+    //cout << "Please provide coordinate in \"x y\": " ;
+    //cin >> m.x >> m.y ;        
+    //cout << "Move at " << m.x << " " << m.y << endl ;
+    //if(m.x >= 0 && m.y >= 0) {
+    //  b.move_at(m, value) ;
+    //  b.print() ; 
+    //}
+    //if(value == board::WHITE) value = board::BLACK ;
+    //else value = board::WHITE ;
   } 
   
   cout << "White: " << b.get_white_count() << " Black: " << b.get_black_count() << endl ;

@@ -4,7 +4,7 @@
 #
 # Copyright (c) 2002-2006 Chung Shin Yee <cshinyee@gmail.com>
 #
-#       http://cshinyee.blogspot.com/index.html
+#       http://myxman.org
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as
