@@ -66,16 +66,29 @@ int main(int argc, char** argv)
     }
         
     best_s = -99999999 ;
-    for(iter = vmoves.begin() ; iter != vmoves.end() ; iter++) {
-      m = *iter ;     
+    int nmove = vmoves.get_num_loc();
+    #pragma omp parallel for default(none) \
+		private(buffer_b,m,s) \
+    		firstprivate(e) \
+		shared(vmoves,b,value,best_s,best_move,cout,nmove) \
+		schedule(dynamic) \
+		ordered
+    for(int i = 0 ; i < nmove ; i++) {
+      m = vmoves.loc(i) ;     
       buffer_b = b ; 
       buffer_b.move_at(m, value) ;      
       s = e.eval(buffer_b, value, (value+1)%2) ; 
+      #pragma omp ordered
+      {
+      #pragma omp critical
+      {
       cout << "(" << m.x << "," << m.y << "): " << s << endl ;
       if(s > best_s) {
         best_s = s ;
 	best_move = m ;
       }          
+      }
+      }
     }             
     b.move_at(best_move, value) ;
     b.print() ;

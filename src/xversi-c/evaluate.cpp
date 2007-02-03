@@ -60,6 +60,7 @@ evaluate::score evaluate::recur_eval(const board& b, int turn, int level,
     location_list move_list ;
     board buffer_b ;
 
+    #pragma omp atomic
     evaluate::rcount++ ;
 
     if(level == 0) return comp_eval(b,turn,turn_num) ;    
@@ -109,6 +110,7 @@ evaluate::score evaluate::end_eval(const board&b , int turn)
   location_list move_list ;
   board buffer_b ;
 
+  #pragma omp atomic
   evaluate::ecount++ ;
 
   gen_move::generate_move(b, turn, move_list) ;
@@ -149,6 +151,7 @@ evaluate::score evaluate::end_eval(const board&b , int turn)
 evaluate::score evaluate::comp_eval(const board& b, int turn, int turn_num)
 {
   score s ;
+  #pragma omp atomic
   evaluate::ccount++ ;
   s  = piece_count(b, turn_num) ;
   s += mobility(b, turn_num) ;

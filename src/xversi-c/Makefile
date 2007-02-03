@@ -22,8 +22,8 @@
 # The GNU General Public License is contained in the file COPYING.
 #
 
-CXX = g++
-CXXFLAGS = -DNDEBUG -O3 -Wall 
+CXX = icc
+CXXFLAGS = -openmp -DNDEBUG -O3 -Wall
 
 all:
 	$(CXX) $(CXXFLAGS) main.cpp board.cpp evaluate.cpp gen_move.cpp -o reversi
